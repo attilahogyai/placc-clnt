@@ -1,0 +1,7 @@
+{
+  "name": "client",
+  "dependencies": {
+    "materialize": "^0.98.0",
+    "moment": "^2.18.1"
+  }
+}

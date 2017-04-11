@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-content">
+  <img src="{{company.img}}">
+    <p>{{company.name}}</p>
+  </div>
+  <div class="card-action">
+  {{#if (gt-num company.building.length 0)}}
+    {{#link-to 'company' company.id}}{{t 'button.buildings'}}{{/link-to}}
+  {{/if}}
+  </div>
+</div>

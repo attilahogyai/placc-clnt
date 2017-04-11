@@ -1,0 +1,23 @@
+<div class="card horizontal">
+  <!--div class="card-image">
+    <img src="/assets/images/card_bg.jpg">
+  </div-->
+  <div class="card-stacked">
+    <div class="card-content">
+	<p>
+	{{#if isLoggedIn}}
+	<h4>Hello {{username}}!</h4><p>{{#link-to 'company' 1 class="waves-effect waves-light btn white-text"}}{{t 'take.seat'}}{{/link-to}}</p> 
+	{{else}}
+	Please login!
+	{{/if}}
+	</p>
+    </div>
+    <!--div class="card-action">
+      <a href="#">This is a link</a>
+    </div-->
+  </div>
+</div>
+           
+
+    
+{{!question-list questionList=model infinityLoad='infinityLoad' enableEditLink=true}}

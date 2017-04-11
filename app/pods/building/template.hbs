@@ -1,0 +1,34 @@
+{{#page-view scrollToTop=true}}
+<div class="section no-pad-bot" id="index-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m7">
+			<blockquote>
+			<h4>{{model.name}}</h4>
+			<p>{{model.address}}, {{model.city}}</p>
+			<p>{{date-picker label=(t 'g.target_date') }}</p>
+    		</blockquote>
+			{{#each model.level as |level|}}
+			<div class="ember-view card question-card">
+			<div class="card-image" style="background-image:url('{{if level.img level.img '/assets/images/building/level.JPG'}}');"></div>
+			<span class="card-title question-title" style="display: block;padding:16px 24px">{{level.name}}</span>
+			<div class="card-action">
+			{{#link-to 'level' level.id}}{{t 'button.open'}}{{/link-to}}
+			</div>
+			</div>
+			{{/each}}
+			</div>
+			<div class="col s12 m5">
+				<div class="toc-wrapper">
+					{{post-question}}				
+		          	{{!top-tag tags=tags}}
+					{{!#each latestQuestion as |question|}}
+					{{!latest-box question=question comments=comments}}
+					{{!/each}}		          	
+				</div>					
+			</div>
+		</div>
+	</div>
+</div>
+{{/page-view}}
+

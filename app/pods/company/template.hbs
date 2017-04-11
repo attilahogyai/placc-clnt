@@ -1,0 +1,32 @@
+{{#page-view scrollToTop=true}}
+<div class="section no-pad-bot" id="index-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m7">
+			<blockquote>
+			<h4>{{model.name}}</h4>
+    		</blockquote>
+			{{#each model.building as |building|}}
+			<div class="ember-view card question-card">
+			<div class="card-image" style="background-image:url('{{building.img}}');"></div>
+			<span class="card-title question-title" style="display: block;padding: 0.7em;">{{building.name}}</span>
+			<div class="card-action">
+			{{#link-to 'building' building.id}}{{t 'button.levels'}}{{/link-to}}
+			</div>
+			</div>
+			{{/each}}
+			</div>
+			<div class="col s12 m5">
+				<div class="toc-wrapper">
+					{{post-question}}				
+		          	{{!top-tag tags=tags}}
+					{{!#each latestQuestion as |question|}}
+					{{!latest-box question=question comments=comments}}
+					{{!/each}}		          	
+				</div>					
+			</div>
+		</div>
+	</div>
+</div>
+{{/page-view}}
+

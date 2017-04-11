@@ -1,0 +1,30 @@
+@mixin transition($args:200ms) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -o-transition: $args;
+    -ms-transition: $args;
+    transition: $args;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin profileimg($width){
+  @extend .rounded-img;
+  height: $width;
+  width: $width;
+  overflow: hidden;
+  margin: auto;
+  background-size: cover;
+  background-position:center;
+  border-width: 0px; 
+  z-index: 90;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
