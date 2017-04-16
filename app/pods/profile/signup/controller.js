@@ -21,7 +21,6 @@ export default Ember.Controller.extend({
     			Ember.Logger.debug('signup error');
     			Ember.Logger.debug(result);
     			self.get('modal').openInfoModal({header:'Sign up error',text:"We can't save your registration! "+result});
-    			Ember.Logger.error(result);
     		});
     		
     	}

@@ -17,8 +17,9 @@ App = Ember.Application.extend({
 Ember.onerror = function(error) {
 	var status = (error.errors && error.errors[0].status) || error.status;
 	var errors = (error.errors && error.errors[0].code) || 'general';
-
-	if(status=='403'){
+	if(status=='400'){
+		Ember.Logger.info("bad request json:"+error.statusText);		
+	}else if(status=='403'){
 		Materialize.toast('<span style="font-size:1.2em;white-space:nowrap;max-width:800px;">Sorry, accessing this content is denined! Please sign in to access this content!<span>', 10000,"",function(){/*window.xappc.reload();*/});
 		Ember.Logger.error("error:"+status+":"+error.statusText);
 	}else if(status=='417'){

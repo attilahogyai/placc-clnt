@@ -7,6 +7,9 @@
 			<h4>{{model.name}}</h4>
 			<p>{{t "g.seats" count=model.seat.length}}</p>
     		</blockquote>
+    		<div>
+    			{{placc-calendar}}
+    		</div>
     		<div class="collection">
     		{{#each model.seat as |seat|}}
     		<a href="#" class="collection-item" {{action "setReservation" seat.id preventDefault=false}}><span class="badge availability">{{t 'g.free'}}</span>{{seat.name}}</a>
