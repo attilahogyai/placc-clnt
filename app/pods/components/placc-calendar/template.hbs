@@ -1,5 +1,34 @@
-{{#each days as |day|}}
-<div style="display:inline-block;width:3em">
-<div style="text-align:center"><p>{{date-format day 'D'}}</p><p>{{date-format day 'MMM'}}</p></div>
+ <!-- Modal Structure -->
+<div id="calendarModal" class="modal">
+  <div class="modal-content">
+    <h4>Reservation calendar</h4>
+<div class="{{componentCssClassName}}_calendar">
+	{{#each items as |element|}}
+	<div class="{{componentCssClassName}}_day_{{date-format element.date 'e'}}">
+	<p class="{{componentCssClassName}}_month">{{date-format element.date 'MMMM'}}</p>
+	<p class="{{componentCssClassName}}_date">{{date-format element.date 'D'}}</p>
+	<p class="{{componentCssClassName}}_week">{{date-format element.date 'ddd'}}</p>
+	{{#if (eq-o element.reservation 0)}}
+	<a class="{{componentCssClassName}}_status_free" {{action 'reserv' element.date}}>reservation</a>
+	{{else if element.owner}}
+	<!--a class="{{!componentCssClassName}}_status_reserved1" {{!action 'release' element.reservation.id}}>PREPARED</a-->
+	<a class="{{componentCssClassName}}_status_reserved2_my" {{action 'release' element.reservation}}>RELEASE</a>
+	{{else}}
+	<a class="{{componentCssClassName}}_status_reserved2">RESERVED</a>	
+	{{/if}}
+	</div>
+	{{/each}}
+	<div class="{{componentCssClassName}}_prev" {{action 'prevWeek'}}>
+	<i class="material-icons">keyboard_arrow_left</i>
+	</div>	
+	<div class="{{componentCssClassName}}_next" {{action 'nextWeek'}}>
+	<i class="material-icons">keyboard_arrow_right</i>
+	</div>
 </div>
-{{/each}}
+
+  </div>
+  <div class="modal-footer">
+    <a href="#!" {{action 'close'}} class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+  </div>
+</div>
+

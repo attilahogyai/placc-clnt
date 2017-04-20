@@ -258,6 +258,8 @@ footer.page-footer .footer-copyright{
 }
 
 
+// ///////////
+
 a.collection-item.negative:not(.active) label{
 	color: #ee6e73;
 }
@@ -634,5 +636,9 @@ ul.share-buttons img{
 
 
 // ----------
+
+
+/********** POD styles ***************/
+@import "pod-styles";
 
 

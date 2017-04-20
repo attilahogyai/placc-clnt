@@ -6,6 +6,6 @@ export default DS.Model.extend({
 	img_x: DS.attr('number'),
 	img_y: DS.attr('number'),
 	capacity: DS.attr('number'),
-	createDt: DS.attr('date')
-
+	createDt: DS.attr('date'),
+	reservations: DS.hasMany('reservation')
 });

@@ -5,6 +5,7 @@ export function initialize(appInstance) {
     var i18n = appInstance.lookup('service:i18n');
     var modal = appInstance.lookup('service:modal');
     window.xappc.i18n=i18n;
+    window.xappc.appInstance=appInstance;
 
     //appInstance.deferReadiness();
     Ember.$.ajaxSetup({

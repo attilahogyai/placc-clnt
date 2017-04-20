@@ -96,6 +96,9 @@ window.xappc = {
 			error: error
 		});
 	},
+	mapOnData: function(data){
+		console.log(data);
+	},
 	session: null,
 	appInstane: null,
 	i18n: null,	

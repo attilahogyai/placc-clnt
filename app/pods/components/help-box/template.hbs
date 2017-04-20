@@ -1,11 +1,13 @@
 <div class="card hide-on-small-only">
 	<div class="card-image" style="background-image:url('/assets/images/q1.jpg');height:180px">
-		<span class="card-title white-text">{{t 'index.need_help'}}</span>
+		<span class="card-title white-text">{{t 'help.title'}}</span>
 	</div>
 	<div class="card-content">
-		<p>{{t 'index.need_help_short'}}</p>
+		<p>{{t helpTextCode}}</p>
 	</div>
+	{{#if showYield}}
 	<div class="card-action" style="padding-top:0">
-	<a href="#" class="waves-effect waves-light btn accent-btn white-text">{{t 'button.how_to_use'}}</a>
+	{{yield}}
 	</div>
+	{{/if}}
 </div>

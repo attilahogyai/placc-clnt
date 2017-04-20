@@ -6,7 +6,6 @@
 			<blockquote>
 			<h4>{{model.name}}</h4>
 			<p>{{model.address}}, {{model.city}}</p>
-			<p>{{date-picker label=(t 'g.target_date') }}</p>
     		</blockquote>
 			{{#each model.level as |level|}}
 			<div class="ember-view card question-card">
@@ -20,8 +19,9 @@
 			</div>
 			<div class="col s12 m5">
 				<div class="toc-wrapper">
-					{{post-question}}				
-		          	{{!top-tag tags=tags}}
+					{{#help-box helpTextCode='help.building' showYield=true}}
+					<a href="#" class="waves-effect waves-light btn accent-btn white-text">{{t 'button.how_to_use'}}</a>
+					{{/help-box}}					          	{{!top-tag tags=tags}}
 					{{!#each latestQuestion as |question|}}
 					{{!latest-box question=question comments=comments}}
 					{{!/each}}		          	
