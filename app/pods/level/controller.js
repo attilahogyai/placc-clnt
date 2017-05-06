@@ -9,9 +9,21 @@ export default Ember.Controller.extend({
     isLoggedIn: Ember.computed.readOnly('session.isLoggedIn'),	
     reservations: null,
     calendarOpen: false,
+    showSVG: true,
 
 	actions:{
-		setReservation (seatId){
+
+		setReservation (seatId, code){
+			if(code){
+				let m=this.get('model').get('seat.content.currentState');
+				for(var i=0;i<m.get('length');i++){
+					let f=m[i]._record;
+					if(f.get('code')==code){
+						seatId=f.get('id');
+						break;
+					}
+				}
+			}
 			if(!this.get('isLoggedIn')){
 				this.get('modal').openInfoModal({header:this.get('i18n').t('login.login_required'),text:this.get('i18n').t('login.login_required_for_reservation')});
 			}else{
@@ -23,19 +35,27 @@ export default Ember.Controller.extend({
 				// call reservation update
 			}
 		},
-		onRelease (reservation){
+		onRelease (reservationId){
+			let reservation=this.get('reservations').find((element)=>{
+				return element.get('id')===reservationId;
+			});
+			if(!reservation){
+				Ember.Logger.debug('something went wrong reservation not found for ID:'+reservationId);
+				return false;
+			}
 			reservation.deleteRecord();
 			let s=reservation.save();
 			this.get('loader').startLoadProcess(s);
 			var c=this;
 			s.then(()=>{
 				this.get('store').query('reservation', {filters: {seat: this.get('seatId')}} ).then((data)=>{
-					this.set('reservations',data);	
+					this.set('reservations',data);
+					window.xappc.refreshSvg(this.get('model'));	
 				}).catch(function(){
 				});				
 			}).catch((status)=>{
                 c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-delete.'+status.responseText,status.text)});									
-			})
+			});
 		},
 		onReserve (day){
 			var sid=this.get('seatId');
@@ -49,18 +69,18 @@ export default Ember.Controller.extend({
 			var c = this;
 			reserv.then((reservation)=>{
 				this.get('store').query('reservation', {filters: {seat: this.get('seatId')}} ).then((data)=>{
-					this.set('reservations',data);	
-					window.xappc.mapOnData(data);
+					this.set('reservations',data);
+					window.xappc.refreshSvg(this.get('model')); 
 				}).catch(function(){
 					
 				});				
 			},(status)=>{
 				this.set('calendarOpen',false);				
-				if(status.responseText){
-	                c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text.'+status.responseText,status.text)});									
-				}else{
+				//if(status.responseText){
+	            //    c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text.'+status.responseText,status.text)});									
+				//}else{
 	                c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text',status.text)});									
-				}
+				//}
 			});
 		},
 		onCloseCalendar(){

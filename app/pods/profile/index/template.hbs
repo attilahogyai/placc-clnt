@@ -1,3 +1,4 @@
+{{#if isLoggedIn}}
 <div class="card horizontal">
   <!--div class="card-image">
     <img src="/assets/images/card_bg.jpg">
@@ -5,11 +6,19 @@
   <div class="card-stacked">
     <div class="card-content">
 	<p>
-	{{#if isLoggedIn}}
-	<h4>Hello {{username}}!</h4><p>{{#link-to 'company' 1 class="waves-effect waves-light btn white-text"}}{{t 'take.seat'}}{{/link-to}}</p> 
-	{{else}}
-	Please login!
-	{{/if}}
+  {{#if (gt-num model.reservations.length 0)}}
+	{{t 'profile.reservation.text' count=model.reservations.length}}<br/>
+  {{#each levels as |level|}}
+    <p>{{#link-to 'level' level.id class="take-seat-link"}}
+    {{level.name}} >>{{/link-to}}</p> 
+
+  {{/each}}
+
+  {{else}}
+  {{t 'profile.noreservation'}}
+  <p>{{#link-to 'company' 1 class="take-seat-link"}}
+  {{t 'signup.take_seat'}} >>{{/link-to}}</p> 
+  {{/if}}
 	</p>
     </div>
     <!--div class="card-action">
@@ -17,7 +26,4 @@
     </div-->
   </div>
 </div>
-           
-
-    
-{{!question-list questionList=model infinityLoad='infinityLoad' enableEditLink=true}}
+{{/if}}

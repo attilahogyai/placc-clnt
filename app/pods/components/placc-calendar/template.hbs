@@ -4,26 +4,42 @@
     <h4>Reservation calendar</h4>
 <div class="{{componentCssClassName}}_calendar">
 	{{#each items as |element|}}
-	<div class="{{componentCssClassName}}_day_{{date-format element.date 'e'}}">
-	<p class="{{componentCssClassName}}_month">{{date-format element.date 'MMMM'}}</p>
-	<p class="{{componentCssClassName}}_date">{{date-format element.date 'D'}}</p>
-	<p class="{{componentCssClassName}}_week">{{date-format element.date 'ddd'}}</p>
-	{{#if (eq-o element.reservation 0)}}
+	<div class="{{componentCssClassName}}_day_{{date-format element.date 'e'}} {{if element.today 'today'}} {{if element.inactive 'placc-date-inactive'}}">
+	<p class="{{componentCssClassName}}_month placc-month">{{date-format element.date 'MMMM'}}</p>
+	<p class="{{componentCssClassName}}_date placc-date">{{date-format element.date 'D'}}</p>
+	<p class="{{componentCssClassName}}_week placc-week">{{date-format element.date 'ddd'}}</p>
+	{{#if (eq-o element.reservation 0) }}
+	{{#unless element.inactive}}
 	<a class="{{componentCssClassName}}_status_free" {{action 'reserv' element.date}}>reservation</a>
+	{{/unless}}
 	{{else if element.owner}}
 	<!--a class="{{!componentCssClassName}}_status_reserved1" {{!action 'release' element.reservation.id}}>PREPARED</a-->
-	<a class="{{componentCssClassName}}_status_reserved2_my" {{action 'release' element.reservation}}>RELEASE</a>
+	{{#if element.future}}
+	<a class="{{componentCssClassName}}_status_reserved2_my" {{action 'release' element.reservation.id}}>RELEASE</a>
+	{{/if}}	
 	{{else}}
 	<a class="{{componentCssClassName}}_status_reserved2">RESERVED</a>	
 	{{/if}}
 	</div>
 	{{/each}}
+	{{#unless prevInactive}}
 	<div class="{{componentCssClassName}}_prev" {{action 'prevWeek'}}>
 	<i class="material-icons">keyboard_arrow_left</i>
-	</div>	
+	</div>
+	{{else}}
+	<div class="{{componentCssClassName}}_prev inactive">
+	<i class="material-icons"> </i>
+	</div>
+	{{/unless}}
+	{{#unless nextInactive}}
 	<div class="{{componentCssClassName}}_next" {{action 'nextWeek'}}>
 	<i class="material-icons">keyboard_arrow_right</i>
 	</div>
+	{{else}}
+	<div class="{{componentCssClassName}}_next inactive">
+	<i class="material-icons"> </i>
+	</div>	
+	{{/unless}}
 </div>
 
   </div>

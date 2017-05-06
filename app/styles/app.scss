@@ -634,6 +634,9 @@ ul.share-buttons img{
     display: block;
 }
 
+body{
+	background-image: url('/assets/images/bg.jpg')
+}
 
 // ----------
 
@@ -641,4 +644,7 @@ ul.share-buttons img{
 /********** POD styles ***************/
 @import "pod-styles";
 
+/*** SVG ***/
+@import "svg";
+/*** end SVG **/
 

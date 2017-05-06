@@ -7,5 +7,8 @@ export default DS.Model.extend({
 	img_y: DS.attr('number'),
 	capacity: DS.attr('number'),
 	createDt: DS.attr('date'),
-	reservations: DS.hasMany('reservation')
+	reservations: DS.hasMany('reservation'),
+	myReservationCount: DS.attr('number'),
+	reservationCount: DS.attr('number'),
+	code: DS.attr('string')
 });

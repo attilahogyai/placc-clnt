@@ -24,5 +24,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
   app.import('bower_components/materialize/dist/js/materialize.js');
   app.import('bower_components/moment/moment.js');
+  app.import('vendor/jquery-svg-pan-zoom/jquery.svg.pan.zoom.js');
+
   return app.toTree();
 };

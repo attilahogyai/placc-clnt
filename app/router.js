@@ -25,6 +25,7 @@ Router.map(function() {
   });
   this.route('company',{path:'company/:company_id'});
   this.route('activate',{path:'/activate/:code/:email'});
+  this.route('errorPage');
 });
 
 export default Router;

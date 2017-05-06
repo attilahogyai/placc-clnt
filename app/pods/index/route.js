@@ -13,5 +13,10 @@ export default QInfinityRoute.extend({
 		}
 
 		return companyPromise;
+	},
+	afterModel:function(model, transition){
+		if(model.get('length')===1){
+			this.transitionTo('company', model.get('firstObject'));
+		}
 	}
 });

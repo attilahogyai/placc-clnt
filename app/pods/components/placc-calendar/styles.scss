@@ -42,13 +42,27 @@ $height:auto;
 	@extend .center-align;
 	width:6em;
 	background-color: white;
-	border: 1px solid $collection-border-color;
+	border-left: 1px solid $collection-border-color;
+	border-top: 1px solid $collection-border-color;
+	border-bottom: 1px solid $collection-border-color;
+	border-right: none;
+
 	height: $height;
 	flex-grow:1;
 //	display:inline-block;
 //	float: left;
-
 }
+.today{
+    background:cornsilk;
+	border:1px solid  #e0e0e0;
+	border-right: none;	
+}
+.placc-date-inactive{
+	.placc-date, .placc-week, .placc-month{
+		color: rgba(0, 0, 0, 0.87);
+	}
+}
+
 &_day_0,&_day_6{
 	background-color:  lighten($collection-border-color, 5%);	
 	cursor: default;
@@ -125,7 +139,7 @@ $height:auto;
 	border: 1px solid $collection-border-color;
 	color: $off-black;
 }
-&_prev, &_next{
+&_prev, &_next {
 	cursor: default;
 	align-self: stretch;
 	vertical-align: top;
@@ -145,6 +159,10 @@ $height:auto;
 		margin: 0px;
 	}	
 }
+&_prev.inactive:hover, &_next.inactive:hover{
+	background-color: $card-header-color;	
+}
 &_prev:hover, &_next:hover{
 	background-color: darken($card-header-color,10%);	
 }
+

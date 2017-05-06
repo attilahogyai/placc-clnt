@@ -30,6 +30,7 @@ export default Ember.Component.extend({
     items:Ember.computed('startDay','reservations',function(){
     	let start=this.get('startDay');
     	let days = [];
+        let today=moment();
     	for(let i=0;i<7;i++){
             let d = start.clone().add(i,'days');
             let r=findReservation(this.get('reservations.content'),d);
@@ -37,10 +38,24 @@ export default Ember.Component.extend({
             if(r){
                 owner=parseInt(this.get('ownerId'))===r.getRecord().get('userId');
             }
-    		days.push({date:d,reservation:r,owner:owner});
+            let future=d.isAfter(today);
+    		days.push({date:d,
+                reservation:r,
+                owner:owner,
+                today:(today.diff(d, 'days')===0 && d.date()===today.date()),
+                future:future,
+                inactive: d.isoWeekday()===6 || d.isoWeekday()===7 || !future
+            });
     	}      
     	return days;
     }),
+    prevInactive:Ember.computed('startDay',function(){
+        return moment().startOf('isoWeek').isSame(this.get('startDay'));
+    }),
+    nextInactive:Ember.computed('startDay',function(){
+        return this.get('startDay').diff(moment(), 'days') + moment().isoWeekday() >= 7;
+    }),
+
     init(){
         this._super(...arguments);
         this.startDay = moment().startOf('isoWeek');

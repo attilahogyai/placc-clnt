@@ -13,6 +13,10 @@ export default Ember.Controller.extend({
     modalName: Ember.computed.readOnly('modal.modalName'),
     modalModel: Ember.computed.readOnly('modal.modalModel'),
 
+    hideHeader: function(){
+        
+    },
+
     actions:{
     	closeModal:function(){
     		this.set('showModal',false);

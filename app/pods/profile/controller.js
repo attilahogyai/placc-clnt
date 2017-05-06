@@ -14,7 +14,11 @@ export default Ember.Controller.extend({
     uploadFile: null,
     uploadFileUrl: null,
     i18n: Ember.inject.service(),
-  
+    applicationController: Ember.inject.controller("application"),
+    showLeftSide:Ember.computed('applicationController.currentPath','isLoggedIn', function(){
+        return this.get('applicationController.currentPath').indexOf('profile.index')===-1 || this.get('isLoggedIn');
+    }),
+
     actions:{
     	loginAction:function(){
 			var c = this;
