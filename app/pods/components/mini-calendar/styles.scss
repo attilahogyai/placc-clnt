@@ -1,0 +1,166 @@
+$height:auto;
+&_header{
+	width: 100%;
+	display: block;
+	background-color:  white;
+	border: 1px solid $collection-border-color;
+	line-height: 2em;
+	height: 2em;
+	p{
+		display: inline-block;
+		margin:0 10px;
+		font-size: 1.5em;
+		color: $off-black;
+		cursor: default;
+	}
+	i{
+		font-size: 2em;
+		float: right;
+		display: block;
+		color: $off-black;
+		cursor: pointer
+	}
+}
+&_calendar{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	width: 100%;	
+}
+&_day_0,&_day_1,&_day_2,&_day_3,&_day_4,&_day_5,&_day_6{
+
+	@extend .center-align;
+	width:5em;
+	background-color: white;
+	border-left: 1px solid $collection-border-color;
+	border-top: 1px solid $collection-border-color;
+	border-bottom: 1px solid $collection-border-color;
+	border-right: none;
+
+	height: $height;
+	flex-grow:1;
+//	display:inline-block;
+//	float: left;
+}
+&_day_0:hover,&_day_1:hover,&_day_2:hover,&_day_3:hover,&_day_4:hover,&_day_5:hover,&_day_6:hover{
+	background-color: darken($card-header-color,10%);	
+}
+
+.selected{
+    background:cornsilk;
+	border:1px solid  #e0e0e0;
+	border-right: none;	
+}
+.placc-date-inactive{
+	.placc-date, .placc-week, .placc-month{
+		color: rgba(0, 0, 0, 0.87);
+	}
+}
+
+&_day_0,&_day_6{
+	background-color:  lighten($collection-border-color, 5%);	
+	cursor: default;
+}
+
+&_week{
+	cursor: default;
+	position: relative;
+	top:-10px;
+	margin: 0px;
+	padding:0px 5px;	
+	text-transform: uppercase;
+}
+&_date{
+	cursor: default;
+	padding:0px 0.5em;
+	margin: 0px;
+	color: $accent-color;
+	font-size: 1.6em;
+	font-style: bold;
+
+}
+&_month{
+	cursor: default;
+	margin: 0px;
+	padding:0.3em 0em;
+	font-size: 0.8em;
+	border-bottom: 1px solid $collection-border-color;
+}
+&_status_free, &_status_reserved2_my,&_status_reserved1{
+	@extend .waves-effect;
+	@extend .waves-light;
+	@extend .btn;
+	@extend .white-text;
+	@include border-radius(2px);
+	margin-bottom: 0.5em;
+	padding:0 0.8em;
+	height: auto;
+	font-size: 0.8em;
+	background-color: $success-color;
+	width:9em;
+}
+&_status_reserved2_my{
+	background-color: $accent-color;	
+}
+&_status_reserved2_my:hover{
+	background-color: darken($accent-color,10%);	
+}
+
+&_status_free:hover {
+	background-color: darken($success-color,10%);
+}
+&_status_reserved1{
+	background-color: $yellow-color;	
+}
+&_status_reserved1:hover {
+	background-color: darken($yellow-color,10%);
+}
+&_status_reserved2{
+	width:6.6em;
+	border: $button-border;
+	border-radius: $button-radius;
+	display: inline-block;
+	line-height: $button-height;
+	padding:0 0.8em;
+	text-transform: uppercase;
+	vertical-align: middle;
+	// Gets rid of tap active state
+	@include border-radius(2px);
+	margin-bottom: 0.5em;
+	height: auto;
+	font-size: 0.8em;
+	background-color:  lighten($collection-border-color, 5%);	
+	border: 1px solid $collection-border-color;
+	color: $off-black;
+}
+&_prev, &_next {
+	cursor: default;
+	align-self: stretch;
+	vertical-align: top;
+	@extend .center-align;
+	@extend .valign-wrapper;
+	border: 1px solid $collection-border-color;	
+	//display:block;
+	//float: left;
+	width: 3em;
+	background-color: $card-header-color;
+	color:white;
+	transition: .2s ease-out;
+	//background-color: lighten($collection-border-color, 10%);	
+	i{
+		font-size: 3em;
+		padding: 0px;
+		margin: 0px;
+	}	
+}
+&_prev.inactive:hover, &_next.inactive:hover{
+	background-color: $card-header-color;	
+}
+&_prev:hover, &_next:hover{
+	background-color: darken($card-header-color,10%);	
+}
+

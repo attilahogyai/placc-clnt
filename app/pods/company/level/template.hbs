@@ -1,0 +1,9 @@
+{{#if calendarOpen}}
+{{placc-calendar onReserv=(action "onReserve") onRelease=(action "onRelease") onClose=(action "onCloseCalendar") reservations=reservations ownerId=userId}}
+{{/if}}
+<div class="myplaccsvg">
+</div>
+<div id="displayed_date">
+{{date-format actualDate 'YYYY.MM.DD'}}
+</div>
+

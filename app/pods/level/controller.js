@@ -74,13 +74,14 @@ export default Ember.Controller.extend({
 				}).catch(function(){
 					
 				});				
-			},(status)=>{
+			},(error)=>{
+
 				this.set('calendarOpen',false);				
-				//if(status.responseText){
-	            //    c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text.'+status.responseText,status.text)});									
-				//}else{
-	                c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text',status.text)});									
-				//}
+				if(error.status===400){
+                	c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-'+status.responseText)});									
+				}else{
+                	c.get('modal').openInfoModal({header:c.get('i18n').t('reservation.error-header'),text:c.get('i18n').t('reservation.error-text',status.text)});									
+				}
 			});
 		},
 		onCloseCalendar(){

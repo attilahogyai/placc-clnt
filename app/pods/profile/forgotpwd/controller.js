@@ -12,6 +12,7 @@ export default Ember.Controller.extend(Validations,{
 	email: null,
 	session: Ember.inject.service(),
     modal: 	Ember.inject.service(),
+		i18n: Ember.inject.service(),
 
 	actions:{
 		sendResetPasswordEmail: function(){
@@ -21,11 +22,11 @@ export default Ember.Controller.extend(Validations,{
 			},null,null);
 			var c=this;
 			this.get('loader').startLoadProcess(reset);
-			reset.then(function(){
-                c.get('modal').openInfoModal({header:'Password change request sent',text:App.locX('/forgot/requestsent')});
+			reset.then(()=>{
+                c.get('modal').openInfoModal({header:'Password change request sent',text:this.get('i18n').t('forgot.requestsent')});
 				c.transitionToRoute('profile.index');
-			},function(){
-                c.get('modal').openInfoModal({header:'Password change request error',text:App.locX('/forgot/requestsent_error')});				
+			},()=>{
+                c.get('modal').openInfoModal({header:'Password change request error',text:this.get('i18n').t('forgot.requestsent_error')});				
 			});
 			
 		}

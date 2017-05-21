@@ -9,7 +9,7 @@
   {{#if (gt-num model.reservations.length 0)}}
 	{{t 'profile.reservation.text' count=model.reservations.length}}<br/>
   {{#each levels as |level|}}
-    <p>{{#link-to 'level' level.id class="take-seat-link"}}
+    <p>{{#link-to 'company' level.companyId class="take-seat-link"}}
     {{level.name}} >>{{/link-to}}</p> 
 
   {{/each}}

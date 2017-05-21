@@ -1,43 +1,33 @@
-svg{
-	background:white; 
-}
-.toc-wrapper{
-	display:none !important;
-}
 
-.g2_1{
-	fill: rgba(0,0,0,0.15) !important;
-}
-.g2_1.table{
-	fill: rgba(0,0,0,0.15);
-}
-.g2_1.table:after{
-	content:'Hetfő';
-}
 
-.rc_0{
-	fill: #00E676 !important;
-}
-.rc_1{
-	fill: #69F0AE !important;
-}
-.rc_2{
-	fill: #F4FF81 !important;
-}
-.rc_3{
-	fill: #EEFF41 !important;
-}
-.rc_4{
-	fill: #FF9800 !important;
-}
-.rc_5{
-	fill: #E53935 !important;
-}
+svg {
+  background: white; }
 
+.toc-wrapper {
+  display: none !important; }
+
+.g2_1 {
+  fill: rgba(0, 0, 0, 0.15) !important; 
+
+}
+.g2_1.table {
+  fill: rgba(0, 0, 0, 0.15); }
+
+.g2_1.table:after {
+  content: 'Hetfő'; }
+
+.rc_0 {
+  fill: #6AB7CB !important; }
+
+.rc_1 {
+  fill: #51A026 !important; }
+  
+.mytable {
+  fill: #EE7F04 !important; }
+  
 .g3_1 {
-    fill: none;
-    stroke: rgba(155,155,155,1);
-    stroke-width: 0.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.15) !important;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round; }

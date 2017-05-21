@@ -18,7 +18,9 @@ $nav-height: 50px;
 body{
 	background-color: $background-color;
 	padding-top: $nav-height;
-}
+	background-image: url('/assets/images/bg.jpg')
+}	
+
 .tspacer{
 	margin:0 1em; 
 }
@@ -30,7 +32,19 @@ body{
 	color: $off-black !important;
 }
 
-// QUMLA TAGS
+#displayed_date {
+    position: absolute;
+    background: $secondary-color;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: $background-color;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+}
+
+// PLACC TAGS
 textarea.q-textarea{
 	padding: 0px;
 	margin-top: 1em;
@@ -53,10 +67,6 @@ span.marker{
 	}
 }
 
-// VELOCITY ANIMATIONS
-.veloSlideDown{
-	display: none;
-}
 
 // MATERIALIZE FIXES
 
@@ -101,7 +111,8 @@ span.marker{
 	z-index: 0;
 }
 
-.card.q-card{
+.card.p-card{
+	@extend .z-depth-2;
     .card-title {
 		color:$navbar-font-color;
 		font-family:$font2nd;
@@ -204,33 +215,6 @@ span.marker{
 }
 
 
-
-
-// SWIPER CUSTOMIZATION - card shoud be smaller in height and width as well
-.swiper-slide,.swiper-slide .card-image{
-	height: 150px;
-	width: 250px;
-	cursor: hand;
-	cursor: pointer;
-	.card-title{
-		box-sizing: border-box;
-		font-size: 1em;
-		padding: 1em;
-		transition: opacity 0.25s ease-out;		
-		opacity: 0;	
-	}
-}
-.swiper-slide.card.active{
-
-	transition: margin-top 0.25s ease;
-	margin-top: 0px;
-	margin-bottom: 0px; 
-	.card-title{
-		transition: opacity 0.25s ease-out;
-		opacity: 1;	
-	}
-}
-
 // FOTER CSS CUSTOMIZATION
 
 footer.page-footer, footer.page-footer .footer-copyright{
@@ -332,7 +316,13 @@ nav{
 	}
 	height:$nav-height;
 	div.nav-wrapper{
-		height:50px;
+    height: 50px;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;		
+		
 	}
 
 }
@@ -425,20 +415,6 @@ div.profileimgmob{
 // SPINER
 .spinner{
 	border-color: $primary-color;
-}
-
-// CHARTIST CUSTOM CSS
-.ch-top-series-a{
-    stroke: $accent-color;
-}
-.ch-top-series-a:hover {
-    stroke: lighten($accent-color, 5%);;
-}
-$ch2-series-list: b c d e f g h i j;
-@each $ch-item in $ch2-series-list {
-	.ch-top-series-#{$ch-item}{
-	    stroke: lighten($dark-gray-color, 70%);
-	}
 }
 
 // RESULT COMMENT
@@ -634,9 +610,6 @@ ul.share-buttons img{
     display: block;
 }
 
-body{
-	background-image: url('/assets/images/bg.jpg')
-}
 
 // ----------
 

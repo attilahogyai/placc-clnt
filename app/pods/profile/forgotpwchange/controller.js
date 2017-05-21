@@ -4,9 +4,10 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     modal: 	Ember.inject.service(),
     requestid: '',
+    i18n: Ember.inject.service(),
     actions:{
         forgotPassword:function(email, newpPassword){
-            var reset=window.xappc.getData('/forgotchange',true,'POST',true,false,{
+            var reset=window.xappc.getData('/api/forgotchange',true,'POST',true,false,{
                 email: email,
                 new_password:newpPassword,
                 requestid: this.get('requestid')
@@ -14,12 +15,12 @@ export default Ember.Controller.extend({
 
             var self=this;
 
-            reset.then(function(){
-                self.get('modal').openInfoModal({header:App.locX('/profile/password_changed_header'),text:App.locX('/profile/password_changed'), action:function(){
+            reset.then(()=>{
+                self.get('modal').openInfoModal({header:this.get('i18n').t('profile.password_changed_header'),text:this.get('i18n').t('profile.password_changed'), action:function(){
                     self.transitionToRoute('profile.index');
                 }});
-            },function(cause){
-                self.get('modal').openInfoModal({header:App.locX('/profile/password_change_error'),text:''});                
+            },(cause)=>{
+                self.get('modal').openInfoModal({header:this.get('i18n').t('profile.password_change_error'),text:''});                
             });
             return reset;
         }

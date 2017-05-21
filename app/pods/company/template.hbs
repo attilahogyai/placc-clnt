@@ -1,34 +1,34 @@
 {{#page-view scrollToTop=true}}
 <div class="section no-pad-bot" id="index-banner">
-	<div class="container">
 		<div class="row">
-			<div class="col s12 m7">
+			<div class="col s12 m5 l3">
+			{{#each model.building as |building|}}
+			<div class="card p-card">
+			<div class="card-image" style="background-image:url('{{building.img}}');"></div>
+			<span class="card-title question-title" style="display: block;padding: 0.7em;">	
 			<blockquote>
 			<h4>{{model.name}}</h4>
+			{{building.name}}
     		</blockquote>
-			{{#each model.building as |building|}}
-			<div class="ember-view card question-card">
-			<div class="card-image" style="background-image:url('{{building.img}}');"></div>
-			<span class="card-title question-title" style="display: block;padding: 0.7em;">{{building.name}}</span>
-			<div class="card-action">
-			{{#link-to 'building' building.id}}{{t 'button.levels'}}{{/link-to}}
-			</div>
+			</span>
+
+<div class="collection">
+	{{#each building.level as |l|}}	
+	<a href="#" {{action 'onSelectLevel' l.id}} class="collection-item {{if (eq-s l.id level) 'active'}}">{{l.name}}</a>
+	{{/each}}
+</div>
+{{#if level}}
+{{mini-calendar onSelectDate=(action "onSelectDate") actualDate=actualDate}}
+{{/if}}
 			</div>
 			{{/each}}
 			</div>
-			<div class="col s12 m5">
-				<div class="toc-wrapper">
-					{{#help-box helpTextCode='help.company' showYield=true}}
-					<a href="#" class="waves-effect waves-light btn accent-btn white-text">{{t 'button.how_to_use'}}</a>
-					{{/help-box}}							
-		          	{{!top-tag tags=tags}}
-					{{!#each latestQuestion as |question|}}
-					{{!latest-box question=question comments=comments}}
-					{{!/each}}		          	
-				</div>					
+			<div class="col s12 m7 l9">
+			<div class="card p-card">
+			{{outlet}}
+			</div>
 			</div>
 		</div>
-	</div>
 </div>
 {{/page-view}}
 

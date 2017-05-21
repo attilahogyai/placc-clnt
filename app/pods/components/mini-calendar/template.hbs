@@ -1,0 +1,28 @@
+ <!-- Modal Structure -->
+<div class="{{componentCssClassName}}_calendar">
+	{{#each items as |element|}}
+	<div class="{{componentCssClassName}}_day_{{date-format element.date 'e'}} {{if element.selected 'selected'}} {{if element.inactive 'placc-date-inactive'}}" {{action "select" element.date}}>
+	<p class="{{componentCssClassName}}_month placc-month">{{date-format element.date 'MMMM'}}</p>
+	<p class="{{componentCssClassName}}_date placc-date">{{date-format element.date 'D'}}</p>
+	<p class="{{componentCssClassName}}_week placc-week">{{date-format element.date 'ddd'}}</p>
+	</div>
+	{{/each}}
+	{{#unless prevInactive}}
+	<div class="{{componentCssClassName}}_prev" {{action 'prevWeek'}}>
+	<i class="material-icons">keyboard_arrow_left</i>
+	</div>
+	{{else}}
+	<div class="{{componentCssClassName}}_prev inactive">
+	<i class="material-icons"> </i>
+	</div>
+	{{/unless}}
+	{{#unless nextInactive}}
+	<div class="{{componentCssClassName}}_next" {{action 'nextWeek'}}>
+	<i class="material-icons">keyboard_arrow_right</i>
+	</div>
+	{{else}}
+	<div class="{{componentCssClassName}}_next inactive">
+	<i class="material-icons"> </i>
+	</div>	
+	{{/unless}}
+</div>

@@ -8,8 +8,10 @@ export default Ember.Route.extend({
 		if(model.get('length')===0){
 			this.transitionTo('index');
 		}
+		/*
 		if(model.get('building.length')===1){
 			this.transitionTo('building',model.get('building').get('firstObject').get('id'));
 		}
+		*/
 	}
 });

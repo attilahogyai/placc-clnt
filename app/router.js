@@ -23,7 +23,10 @@ Router.map(function() {
   this.route('admin', {path: 'admin'},function() {
   this.route("language", {path: "language"}); 
   });
-  this.route('company',{path:'company/:company_id'});
+  this.route('level',{path:'level/:level_id'});
+  this.route('company',{path:'company/:company_id'}, function(){
+    this.route('level',{path:'level/:level_id/:date'});
+  });
   this.route('activate',{path:'/activate/:code/:email'});
   this.route('errorPage');
 });
