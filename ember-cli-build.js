@@ -7,6 +7,9 @@ module.exports = function(defaults) {
     // Add options here
     sassOptions: {
       includePaths:['bower_components/materialize/sass/']
+    },
+    fingerprint: {
+      exclude: ['assets/images/building','assets/images/levels' ]
     }
   });
 

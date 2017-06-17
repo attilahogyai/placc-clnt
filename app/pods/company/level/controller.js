@@ -65,13 +65,17 @@ export default Ember.Controller.extend({
 		setReservation (seatId, code){
 			if(this.get('actualDate')){
 				let seat=this.get('model.seat').find((element)=>{
-					return element.get('id')===seatId;
+					if(code){
+						return element.get('code')===code;
+					}else{
+						return element.get('id')===seatId;
+					}
 				});
 
 				if(seat.get('myReservationCount')>0){ // set the reservation
-					this.unsetReservation(this.get('actualDate'), seatId);
+					this.unsetReservation(this.get('actualDate'), seat.get('id'));
 				}else{ // unset the reservation
-					this.setReservation(this.get('actualDate'), seatId);
+					this.setReservation(this.get('actualDate'), seat.get('id'));
 				}				
 			}
 		},

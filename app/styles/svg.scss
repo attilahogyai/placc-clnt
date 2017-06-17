@@ -1,4 +1,18 @@
+/* Navbar */
 
+nav div.nav-wrapper, nav .bread-nav div.bread-nav-wrapper, .bread-nav nav div.bread-nav-wrapper {
+    height: 50px;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+nav div.profileimg {
+    display:none !important;
+}
+
+/** SVG **/
 
 svg {
   background: white; }
@@ -7,20 +21,20 @@ svg {
   display: none !important; }
 
 .g2_1 {
-  fill: rgba(0, 0, 0, 0.15) !important; 
-
+  fill:  #747476 !important; 
 }
 .g2_1.table {
-  fill: rgba(0, 0, 0, 0.15); }
+  fill: #747476;
+}
 
 .g2_1.table:after {
   content: 'Hetfő'; }
 
 .rc_0 {
-  fill: #6AB7CB !important; }
+  fill: #3CA94D !important; }
 
 .rc_1 {
-  fill: #51A026 !important; }
+  fill: #747476 !important; }
   
 .mytable {
   fill: #EE7F04 !important; }

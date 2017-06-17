@@ -3,6 +3,9 @@ import Ember from "ember";
 var view = Ember.Component.extend({
     appstate: Ember.inject.service(),
     tagName: '',
+    browsercheck: Ember.inject.service(), 
+    modal: Ember.inject.service(),
+    i18n: Ember.inject.service(),
     didInsertElement: function() {
         Ember.$('#preNavigation').remove();
         Ember.$('.button-collapse').sideNav({
@@ -15,6 +18,10 @@ var view = Ember.Component.extend({
 
         Ember.addChangeSizeListener('qumla-main-view', this, this.viewportSizeChanged);
         this.viewportSizeChanged();
+        var browser=this.get('browsercheck').getBrowser();
+        if(browser === 'MSIE' || browser === 'Edge'){
+            this.get('modal').openInfoModal({header:this.get('i18n').t('browser.version_header'), text:this.get('i18n').t('browser.unsupported_browser')});
+        }
     },
         /*
  		var lastScrollTop = 0;

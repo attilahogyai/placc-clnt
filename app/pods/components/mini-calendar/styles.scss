@@ -34,26 +34,25 @@ $height:auto;
 &_day_0,&_day_1,&_day_2,&_day_3,&_day_4,&_day_5,&_day_6{
 
 	@extend .center-align;
-	width:5em;
-	background-color: white;
-	border-left: 1px solid $collection-border-color;
-	border-top: 1px solid $collection-border-color;
-	border-bottom: 1px solid $collection-border-color;
-	border-right: none;
-
-	height: $height;
-	flex-grow:1;
-//	display:inline-block;
-//	float: left;
+    width: 5em;
+    border-left: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    border-bottom: 1px solid #C8C8C8;
+    border-right: none;
+    height: auto;
+    flex-grow: 1;
+    min-width: 20%;
+    border-top: none;
 }
 &_day_0:hover,&_day_1:hover,&_day_2:hover,&_day_3:hover,&_day_4:hover,&_day_5:hover,&_day_6:hover{
 	background-color: darken($card-header-color,10%);	
 }
 
 .selected{
-    background:cornsilk;
-	border:1px solid  #e0e0e0;
-	border-right: none;	
+    background: cornsilk;
+    border: 1px solid #C8C8C8;
+    border-right: none;
+    border-top: 0;
 }
 .placc-date-inactive{
 	.placc-date, .placc-week, .placc-month{
@@ -143,7 +142,8 @@ $height:auto;
 	vertical-align: top;
 	@extend .center-align;
 	@extend .valign-wrapper;
-	border: 1px solid $collection-border-color;	
+	//border: 1px solid $collection-border-color;	
+	border:none;
 	//display:block;
 	//float: left;
 	width: 3em;
